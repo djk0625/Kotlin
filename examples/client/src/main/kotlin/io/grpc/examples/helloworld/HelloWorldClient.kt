@@ -29,6 +29,10 @@ class HelloWorldClient(private val channel: ManagedChannel) : Closeable {
         val request = HelloRequest.newBuilder().setName(name).build()
         val response = stub.sayHello(request)
         println("Received: ${response.message}")
+        val againResponse = stub.sayHelloAgain(request)
+        println("Received: ${againResponse.message}")
+        val lastResponse = stub.sayHelloLast(request)
+        println("Received: ${lastResponse.message}")
     }
 
     override fun close() {
